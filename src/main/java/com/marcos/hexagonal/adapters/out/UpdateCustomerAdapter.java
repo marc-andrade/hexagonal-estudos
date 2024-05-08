@@ -1,16 +1,15 @@
 package com.marcos.hexagonal.adapters.out;
 
+import com.marcos.hexagonal.adapters.in.controller.mapper.CustomerMapper;
 import com.marcos.hexagonal.adapters.out.repository.CustomerRepository;
 import com.marcos.hexagonal.adapters.out.repository.mapper.CustomerEntityMapper;
 import com.marcos.hexagonal.application.core.domain.Customer;
-import com.marcos.hexagonal.application.ports.out.FindCustomerIdOutputPort;
+import com.marcos.hexagonal.application.ports.out.UpdateCustomerOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
-public class FindCustomerByIdAdapter implements FindCustomerIdOutputPort {
+public class UpdateCustomerAdapter implements UpdateCustomerOutputPort {
 
     @Autowired
     private CustomerRepository customerRepository;
@@ -19,8 +18,8 @@ public class FindCustomerByIdAdapter implements FindCustomerIdOutputPort {
     private CustomerEntityMapper customerEntityMapper;
 
     @Override
-    public Optional<Customer> find(String id) {
-        var customerEntity = customerRepository.findById(id);
-        return customerEntity.map(entity -> customerEntityMapper.toCustomer(entity));
+    public void update(Customer customer) {
+        var customerEntity = customerEntityMapper.toCustomerEntity(customer);
+        customerRepository.save(customerEntity);
     }
 }
