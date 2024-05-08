@@ -29,8 +29,6 @@ public class CustomerController {
 
     @Autowired
     private CustomerMapper customerMapper;
-    @Autowired
-    private UpdateCustomerUseCase updateCustomerUseCase;
 
     @PostMapping
     public ResponseEntity<Void> insert(@Valid @RequestBody CustomerRequest customerRequest){
@@ -51,7 +49,7 @@ public class CustomerController {
                                        @Valid @RequestBody CustomerRequest customerRequest) {
         Customer customer = customerMapper.toCustomer(customerRequest);
         customer.setId(id);
-        updateCustomerUseCase.update(customer, customerRequest.getZipCode());
+        updateCustomerInputPort.update(customer, customerRequest.getZipCode());
         return ResponseEntity.noContent().build();
     }
 }
