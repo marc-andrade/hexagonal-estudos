@@ -5,9 +5,7 @@ import com.marcos.hexagonal.application.ports.in.FindCustomerByIdInputPort;
 import com.marcos.hexagonal.application.ports.in.UpdateCustomerInputPort;
 import com.marcos.hexagonal.application.ports.out.FindAddressByZipCodeOutputPort;
 import com.marcos.hexagonal.application.ports.out.UpdateCustomerOutputPort;
-import org.springframework.stereotype.Service;
 
-@Service
 public class UpdateCustomerUseCase implements UpdateCustomerInputPort {
 
     private final FindCustomerByIdInputPort findCustomerByIdInputPort;

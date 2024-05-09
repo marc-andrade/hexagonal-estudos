@@ -3,9 +3,7 @@ package com.marcos.hexagonal.application.core.usecase;
 import com.marcos.hexagonal.application.core.domain.Customer;
 import com.marcos.hexagonal.application.ports.in.FindCustomerByIdInputPort;
 import com.marcos.hexagonal.application.ports.out.FindCustomerIdOutputPort;
-import org.springframework.stereotype.Service;
 
-@Service
 public class FindCustomerByIdUseCase implements FindCustomerByIdInputPort {
 
     private final FindCustomerIdOutputPort findCustomerIdOutputPort;
