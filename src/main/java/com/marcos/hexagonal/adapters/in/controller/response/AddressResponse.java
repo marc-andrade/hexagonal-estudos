@@ -3,7 +3,7 @@ package com.marcos.hexagonal.adapters.in.controller.response;
 import lombok.Data;
 
 @Data
-public class AddresResponse {
+public class AddressResponse {
 
     private String street;
     private String city;
